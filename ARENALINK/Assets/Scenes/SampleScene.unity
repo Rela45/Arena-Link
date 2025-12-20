@@ -769,9 +769,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3149868a48df9d47a7244d7bbd72b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 5
+  moveSpeed: 10
   rb: {fileID: 1732983444}
   weapon: {fileID: 563788866}
+  dashSpeed: 25
+  dashDuration: 0.15
+  dashCooldown: 1
 --- !u!212 &1732983447
 SpriteRenderer:
   m_ObjectHideFlags: 0
