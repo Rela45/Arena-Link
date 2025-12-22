@@ -84,4 +84,9 @@ public class PlayerController : MonoBehaviour
         }
         isDashing = false;
     }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        Destroy(gameObject);
+    }
 }
