@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 10f;
     public Rigidbody2D rb;
     public Weapon weapon;
+    public GameObject Explosion;
 
     Vector2 moveDirection;
     Vector2 mousePosition;
@@ -87,6 +88,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        Instantiate(Explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

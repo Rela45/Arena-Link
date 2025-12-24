@@ -3319,6 +3319,7 @@ MonoBehaviour:
   moveSpeed: 10
   rb: {fileID: 1732983444}
   weapon: {fileID: 563788866}
+  Explosion: {fileID: 2817072486323133841, guid: dad1bbb8590f750419c10c819b3786c8, type: 3}
   dashSpeed: 25
   dashDuration: 0.15
   dashCooldown: 1
@@ -3347,7 +3348,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 017d18c2b7095664aad840227b2e22b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
