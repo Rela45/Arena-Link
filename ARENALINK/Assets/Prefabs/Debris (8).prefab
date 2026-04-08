@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 578762260046510194}
   - component: {fileID: 7100138160794965812}
   - component: {fileID: 5425135266593482811}
+  - component: {fileID: -8406097945911503377}
   m_Layer: 0
   m_Name: Debris (8)
   m_TagString: Untagged
@@ -118,7 +119,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!58 &5425135266593482811
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -155,3 +156,16 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0.05299108, y: -0.015229328}
   m_Radius: 0.32588547
+--- !u!114 &-8406097945911503377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8163782438286904044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ced16e8f2e7a414382b41a46c0ef6c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyOnCollision
+  ignoreTag: UpperLimit
