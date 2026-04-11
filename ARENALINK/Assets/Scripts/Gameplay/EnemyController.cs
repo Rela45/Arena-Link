@@ -28,12 +28,12 @@ public class EnemyController : MonoBehaviour
         // Use OverlapSphere first to see what's in range
         Collider[] colliders = Physics.OverlapSphere(origin + direction.normalized * (length / 2f), length / 2f, mask);
         Debug.Log($"Colliders in range: {colliders.Length}");
-        foreach (var col in colliders)
+        foreach (var col in colliders) //this is not working 
         {
-            Debug.Log($"  - {col.gameObject.name} (layer: {LayerMask.LayerToName(col.gameObject.layer)})");
+            Debug.Log($"  - {col.gameObject.name} (layer: {LayerMask.LayerToName(col.gameObject.layer)})");//this is not working 
         }
         
-        if (Physics.Raycast(ray, out hit, length, mask) && (thisCollider == null || hit.collider != thisCollider))
+        if (Physics.Raycast(ray, out hit, length, mask) && (thisCollider == null || hit.collider != thisCollider))//this is not working 
         {
             // Hit: draw from origin to contact point
             Debug.Log($"HIT: {hit.collider.gameObject.name} at distance {hit.distance}");

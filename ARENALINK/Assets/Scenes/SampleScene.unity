@@ -1226,6 +1226,7 @@ GameObject:
   - component: {fileID: 1065964016}
   - component: {fileID: 1065964017}
   - component: {fileID: 1065964018}
+  - component: {fileID: 1065964019}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
@@ -1300,7 +1301,7 @@ Transform:
   m_GameObject: {fileID: 1065964013}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.36, y: 2.7, z: -0.1}
+  m_LocalPosition: {x: -0.36, y: 2.7, z: 0}
   m_LocalScale: {x: 1.3500133, y: 1.2349507, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1392,6 +1393,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 10
+--- !u!114 &1065964019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065964013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c837a225b012a6a48b88097ead475db5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  rayLength: 5
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  missColor: {r: 0, g: 1, b: 0, a: 1}
+  rayMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1141931099
 GameObject:
   m_ObjectHideFlags: 0
