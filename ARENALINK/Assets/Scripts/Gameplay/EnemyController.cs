@@ -3,47 +3,55 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [Header("Raycast Debug")]
-    public float rayLength = 25f;
+    public float rayLength = 60f;
     public Color hitColor = Color.red;
     public Color missColor = Color.green;
-    public LayerMask rayMask = ~0;
+    public LayerMask rayMask = 0;
+
+    public Weapon weapon;
+    
+    [Header("Fire Rate")]
+    public float fireRate = 0.5f;  // Fire every 0.5 seconds
+    private float fireTimer = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
+    void Start()
+    {
+    }
     // Update is called once per frame
     void Update()
     {
-        DrawRaycast(transform.position, Vector3.down, rayLength, hitColor, missColor, rayMask);
+        fireTimer -= Time.deltaTime;  // Decrease timer each frame
+        DrawRaycast(transform.position, Vector2.down, rayLength, hitColor, missColor, rayMask);
     }
 
-    // Performs a Physics.Raycast and draws a debug line: red if hit, green if miss
-    public void DrawRaycast(Vector3 origin, Vector3 direction, float length, Color hitColor, Color missColor, LayerMask mask)
+    // Performs a Physics2D.Raycast and draws a debug line: red if hit, green if miss
+    public void DrawRaycast(Vector2 origin, Vector2 direction, float length, Color hitColor, Color missColor, LayerMask mask)
     {
-        Ray ray = new Ray(origin, direction.normalized);
-        RaycastHit hit;
+        // Normalize the direction
+        Vector2 normalizedDirection = direction.normalized;
         
-        // Try to raycast, excluding this object's own collider
-        Collider thisCollider = GetComponent<Collider>();
+        // Perform 2D Raycast
+        RaycastHit2D hit = Physics2D.Raycast(origin, normalizedDirection, rayLength, mask);
         
-        // Use OverlapSphere first to see what's in range
-        Collider[] colliders = Physics.OverlapSphere(origin + direction.normalized * (length / 2f), length / 2f, mask);
-        Debug.Log($"Colliders in range: {colliders.Length}");
-        foreach (var col in colliders) //this is not working 
-        {
-            Debug.Log($"  - {col.gameObject.name} (layer: {LayerMask.LayerToName(col.gameObject.layer)})");//this is not working 
-        }
-        
-        if (Physics.Raycast(ray, out hit, length, mask) && (thisCollider == null || hit.collider != thisCollider))//this is not working 
+        if (hit.collider != null)
         {
             // Hit: draw from origin to contact point
             Debug.Log($"HIT: {hit.collider.gameObject.name} at distance {hit.distance}");
-            Debug.DrawRay(origin, (hit.point - origin), hitColor);
+            Debug.DrawLine(origin, hit.point, hitColor);
+            
+            // Only fire if cooldown is ready
+            if (fireTimer <= 0f)
+            {
+                weapon.Fire();
+                fireTimer = fireRate;  // Reset cooldown
+            }
         }
         else
         {
             // Miss: draw full ray length
             Debug.Log("MISS - no colliders hit by raycast");
-            Debug.DrawRay(origin, direction.normalized * length, missColor);
+            Debug.DrawLine(origin, origin + normalizedDirection * length, missColor);
         }
     }
 }
